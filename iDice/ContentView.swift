@@ -14,6 +14,28 @@ struct ContentView: View {
             Image("background")
                 .resizable()
                 .edgesIgnoringSafeArea(.all)
+            
+            
+            VStack {
+                Image("diceeLogo")
+                Spacer()
+                HStack {
+                    Dice(v: 1) // hard coded die value will be removed
+                    Dice(v: 2) // hard coded die value will be removed
+                }
+                .padding(.horizontal)
+                Spacer()
+                Button(action: {
+                    
+                }) {
+                    Text("Roll")
+                        .font(.system(size: 50))
+                        .fontWeight(.heavy)
+                        .foregroundColor(.white)
+                        .padding()
+                }
+                .background(Color.red)
+            }
         }
     }
 }
@@ -21,5 +43,17 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+    }
+}
+
+struct Dice: View {
+    
+    let v: Int
+    
+    var body: some View {
+        Image("dice\(v)")
+            .resizable()
+            .aspectRatio(1.0, contentMode: .fit)
+            .padding()
     }
 }
