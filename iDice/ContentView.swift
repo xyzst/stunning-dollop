@@ -9,24 +9,32 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State
+    private var leftDie: Int = 1
+    
+    @State
+    private var rightDie: Int = 1
+    
     var body: some View {
+    
         ZStack {
             Image("background")
                 .resizable()
                 .edgesIgnoringSafeArea(.all)
             
-            
             VStack {
                 Image("diceeLogo")
                 Spacer()
                 HStack {
-                    Dice(v: 1) // hard coded die value will be removed
-                    Dice(v: 2) // hard coded die value will be removed
+                    Dice(v: leftDie)
+                    Dice(v: rightDie)
                 }
                 .padding(.horizontal)
                 Spacer()
                 Button(action: {
-                    
+                    self.leftDie = Int.random(in: 1...6)
+                    self.rightDie = Int.random(in: 1...6)
                 }) {
                     Text("Roll")
                         .font(.system(size: 50))
